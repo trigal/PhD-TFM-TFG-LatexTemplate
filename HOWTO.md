@@ -44,7 +44,7 @@ A typical workflow for using this template involves:
 
 1.  **Select Document Type:** Decide whether you are working on a PhD, TFM, or TFG. This will guide which main `.tex` file (e.g., `Book/book.tex`, `Anteproyecto/anteproyecto.tex`) and `Papeleo` directory is most relevant.
 2.  **Edit Content:**
-    *   For main content, modify `.tex` files within `Book/chapters/`, `Book/abstract/`, `Book/appendix/`, etc.
+    *   For main content, modify `Book/chapters/main.tex` (primary chapter file), plus files within `Book/abstract/`, `Book/appendix/`, etc.
     *   For bibliography, update `Book/biblio/biblio.bib`.
     *   For figures, place image files in `Book/figures/` and `Book/diagrams/`. The `\graphicspath` command in `book.tex` is configured to look in these directories. Note that `logos/` is primarily for template-specific logos, and you only need to add your own content to `figures/` or `diagrams/`.
 3.  **Configure Document:** Adjust settings primarily in `Config/myconfig.tex` (see Customization Guide below). Avoid modifying `Config/preamble.tex` and `Config/postamble.tex` unless you are an advanced user.
@@ -68,8 +68,8 @@ Most common customizations are handled through files in the `Config/` and `Book/
 *   **Colors and Styling:**
     *   General color definitions and some styling options are found in `Config/colors.tex`.
 *   **Adding New Chapters/Sections:**
-    *   Create a new `.tex` file in `Book/chapters/` (e.g., `new_chapter.tex`).
-    *   Include it in `Book/book.tex` using `\include{chapters/new_chapter}` at the desired position.
+    *   By default, add new chapter content directly in `Book/chapters/main.tex`.
+    *   If you prefer split chapter files, include them from `Book/chapters/main.tex` at the desired position.
 *   **Adding Figures/Diagrams:**
     *   Place image files (e.g., `.pdf`, `.png`, `.eps`) in `Book/figures/` or `Book/diagrams/`. 
     *   Include them in your `.tex` files using `\includegraphics{figures/your_image}`.

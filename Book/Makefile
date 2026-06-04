@@ -44,12 +44,6 @@ DIFF_FLATTEN_ROOT_FILENAME = $(ROOT_FILENAME)-flatten-diff
 DIFF_FLATTEN_TEX_FILE = $(DIFF_FLATTEN_ROOT_FILENAME).tex
 
 # Source files
-CHAPTER_SOURCES = $(wildcard chapters/*.tex)
-CHAPTER_ORIG_SOURCES = $(wildcard chapters/orig/*.tex)
-CHAPTER_BARE_SOURCES = $(wildcard chapters/bare/*.tex)
-APPENDIX_SOURCES = $(wildcard appendix/*.tex)
-APPENDIX_ORIG_SOURCES = $(wildcard appendix/orig/*.tex)
-APPENDIX_BARE_SOURCES = $(wildcard appendix/bare/*.tex)
 DIA_SOURCES = $(wildcard diagrams/*.dia)
 SVG_SOURCES = $(wildcard diagrams/*.svg)
 EPS_SOURCES = $(wildcard figures/*.eps) $(wildcard additional/*.eps)
@@ -61,12 +55,9 @@ PDFS_FROM_SVG = $(patsubst %.svg, %.pdf, $(SVG_SOURCES))
 PDFS_FROM_EPS = $(patsubst %.eps, %.pdf, $(EPS_SOURCES))
 
 # Dummy targets
-DUMMY_MAIN_TARGETS = all bare backup-chapters orig-chapters bare-chapters clean-orig-figures clean-orig-diagrams all_latexmk tar clean clean_latexmk
+DUMMY_MAIN_TARGETS = all all_latexmk tar clean clean_latexmk
 DUMMY_DIFF_TARGETS = snapshot flatten latexdiff
 DUMMY_TARGETS = pdf_dia_done pdf_svg_done pdf_eps_done
-
-# Date
-DATE = $(shell date "+%C%y%m%d-%H%M%S")
 
 # Main targets
 all: $(DUMMY_TARGETS)
@@ -88,50 +79,6 @@ all: $(DUMMY_TARGETS)
 	echo "$(RELEASE)" > ../RELEASE.txt
 	(git add ../RELEASE.txt >& /dev/null) || echo "Could not add ../RELEASE.txt to git index. This is fine if you are not using git."
 
-
-bare: backup-chapters bare-chapters clean-orig-figures clean-orig-diagrams
-
-backup-chapters:
-	@echo "Backup up chapter sources to chapters/$(DATE)..."
-	mkdir -p chapters/$(DATE)
-	cp $(CHAPTER_SOURCES) chapters/$(DATE)
-	@echo " Done!"
-	@echo "Backup up appendix sources to appendix/$(DATE)..."
-	mkdir -p appendix/$(DATE)
-	cp $(APPENDIX_SOURCES) appendix/$(DATE)
-	@echo " Done!"
-
-orig-chapters: backup-chapters
-	@echo "Setting orig chapters..."
-	for f in $(CHAPTER_ORIG_SOURCES);  do cp $$f chapters; done
-	for f in $(APPENDIX_ORIG_SOURCES); do cp $$f appendix; done
-	@echo " Done!"
-
-bare-chapters: backup-chapters
-	@echo "Setting orig chapters..."
-	for f in $(CHAPTER_BARE_SOURCES);  do cp $$f chapters; done
-	for f in $(APPENDIX_BARE_SOURCES); do cp $$f appendix; done
-	@echo " Done!"
-
-clean-orig-figures:
-	@echo "About to delete the files in the 'figures' directory..."
-	@echo "This cannot be undone..."
-	@echo "Got it?..."
-	@read -p "I will ask you once... Are you sure to delete all files there? " dodelete; \
-	if [ "$$dodelete" == "Y" ]; \
-	then \
-	rm -f figures/*.eps figures/*.pdf figures/*.png figures/*.jpg; \
-	fi
-
-clean-orig-diagrams:
-	@echo "About to delete the files in the 'diagrams' directory..."
-	@echo "This cannot be undone..."
-	@echo "Got it?..."
-	@read -p "I will ask you once... Are you sure to delete all files there? " dodelete; \
-	if [ "$$dodelete" == "Y" ]; \
-	then \
-	rm -f diagrams/*.eps diagrams/*.pdf diagrams/*.dia; \
-	fi
 
 all_latexmk: $(DUMMY_TARGETS)
 	$(LATEXMK_TOOL) -$(PDF_PREFIX) -pdflatex="pdflatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -xelatex="xelatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -lualatex="lualatex $(FLAGS_SYNCTEX_PDFLATEX) -interactive=nonstopmode" -use-make $(TEX_FILE)
