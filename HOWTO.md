@@ -44,7 +44,7 @@ A typical workflow for using this template involves:
 
 1.  **Select Document Type:** Decide whether you are working on a PhD, TFM, or TFG. This will guide which main `.tex` file (e.g., `Book/book.tex`, `Anteproyecto/anteproyecto.tex`) and `Papeleo` directory is most relevant.
 2.  **Edit Content:**
-    *   For main content, modify `Book/chapters/main.tex` (primary chapter file), plus files within `Book/abstract/`, `Book/appendix/`, etc.
+    *   For main content, modify `Book/chapters/main.tex` (consolidated chapter file), plus files within `Book/abstract/`, `Book/appendix/`, etc.
     *   For bibliography, update `Book/biblio/biblio.bib`.
     *   For figures, place image files in `Book/figures/` and `Book/diagrams/`. The `\graphicspath` command in `book.tex` is configured to look in these directories. Note that `logos/` is primarily for template-specific logos, and you only need to add your own content to `figures/` or `diagrams/`.
 3.  **Configure Document:** Adjust settings primarily in `Config/myconfig.tex` (see Customization Guide below). Avoid modifying `Config/preamble.tex` and `Config/postamble.tex` unless you are an advanced user.
