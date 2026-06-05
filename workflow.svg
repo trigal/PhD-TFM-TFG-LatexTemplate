@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  PhD / TFM / TFG LaTeX Template – Workflow Flowchart
+  This diagram illustrates the end-to-end process for creating a thesis
+  document with this template (see README.md and HOWTO.md for details).
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 720 910" width="720" height="910"
+     font-family="Arial, Helvetica, sans-serif">
+
+  <!-- ── Arrowhead marker ───────────────────────────────────────────── -->
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="7"
+            refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
+    </marker>
+    <!-- drop-shadow filter for boxes -->
+    <filter id="shadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#00000022"/>
+    </filter>
+  </defs>
+
+  <!-- ── Background ─────────────────────────────────────────────────── -->
+  <rect width="720" height="910" fill="#F4F6F8"/>
+
+  <!-- ── Title ──────────────────────────────────────────────────────── -->
+  <text x="360" y="26" text-anchor="middle" font-size="17"
+        font-weight="bold" fill="#2C3E50">PhD / TFM / TFG LaTeX Template – Workflow</text>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       SHAPES  (top → bottom, main column centred at x=370)
+       ═══════════════════════════════════════════════════════════════════ -->
+
+  <!-- 1. START -->
+  <ellipse cx="370" cy="55" rx="90" ry="28" fill="#2C3E50" filter="url(#shadow)"/>
+  <text x="370" y="61" text-anchor="middle" font-size="15"
+        font-weight="bold" fill="white">START</text>
+
+  <!-- ↓ arrow -->
+  <line x1="370" y1="83" x2="370" y2="98" stroke="#555" stroke-width="2"
+        marker-end="url(#arr)"/>
+
+  <!-- 2. Select document type -->
+  <rect x="240" y="100" width="260" height="50" rx="10" fill="#8E44AD"
+        filter="url(#shadow)"/>
+  <text x="370" y="119" text-anchor="middle" font-size="13"
+        font-weight="bold" fill="white">1. Select Document Type</text>
+  <text x="370" y="138" text-anchor="middle" font-size="11"
+        fill="#EEE">PhD · TFM (Master) · TFG (Bachelor)</text>
+
+  <!-- ↓ arrow -->
+  <line x1="370" y1="150" x2="370" y2="165" stroke="#555" stroke-width="2"
+        marker-end="url(#arr)"/>
+
+  <!-- 3. Download / clone template -->
+  <rect x="240" y="167" width="260" height="50" rx="10" fill="#2980B9"
+        filter="url(#shadow)"/>
+  <text x="370" y="186" text-anchor="middle" font-size="13"
+        font-weight="bold" fill="white">2. Download / Clone Template</text>
+  <text x="370" y="205" text-anchor="middle" font-size="11"
+        fill="#EEE">GitHub · Dropbox ZIP · Overleaf</text>
+
+  <!-- ↓ arrow -->
+  <line x1="370" y1="217" x2="370" y2="232" stroke="#555" stroke-width="2"
+        marker-end="url(#arr)"/>
+
+  <!-- 4. Configure myconfig.tex -->
+  <rect x="240" y="234" width="260" height="50" rx="10" fill="#2980B9"
+        filter="url(#shadow)"/>
+  <text x="370" y="253" text-anchor="middle" font-size="13"
+        font-weight="bold" fill="white">3. Configure myconfig.tex</text>
+  <text x="370" y="272" text-anchor="middle" font-size="11"
+        fill="#EEE">author · title · degree · language</text>
+
+  <!-- ↓ arrow -->
+  <line x1="370" y1="284" x2="370" y2="302" stroke="#555" stroke-width="2"
+        marker-end="url(#arr)"/>
+
+  <!-- 5. DECISION – Anteproyecto?  centre (370, 345) -->
+  <!--    top(370,302) right(468,345) bottom(370,388) left(272,345)    -->
+  <polygon points="370,302 468,345 370,388 272,345" fill="#E67E22"
+           filter="url(#shadow)"/>
+  <text x="370" y="339" text-anchor="middle" font-size="12"
+        font-weight="bold" fill="white">Anteproyecto</text>
+  <text x="370" y="356" text-anchor="middle" font-size="12"
+        font-weight="bold" fill="white">needed?</text>
+
+  <!-- YES label + arrow left to side path -->
+  <text x="258" y="336" text-anchor="middle" font-size="11"
+        font-weight="bold" fill="#C0392B">YES</text>
+  <line x1="272" y1="345" x2="216" y2="345" stroke="#555" stroke-width="2"
+        marker-end="url(#arr)"/>
+
+  <!-- ── SIDE PATH: Anteproyecto (left column, centred x=110) ─────── -->
+  <!-- 5a. Edit anteproyecto.tex -->
+  <rect x="16" y="322" width="195" height="46" rx="8" fill="#27AE60"
+        filter="url(#shadow)"/>
+  <text x="113" y="340" text-anchor="middle" font-size="12"
+        font-weight="bold" fill="white">Edit anteproyecto.tex</text>
+  <text x="113" y="357" text-anchor="middle" font-size="10"
+        fill="#DDD">Anteproyecto/ directory</text>
+
+  <!-- ↓ arrow side path -->
+  <line x1="113" y1="368" x2="113" y2="385" stroke="#555" stroke-width="2"
+        marker-end="url(#arr)"/>
+
+  <!-- 5b. Compile anteproyecto -->
+  <rect x="16" y="387" width="195" height="46" rx="8" fill="#27AE60"
+        filter="url(#shadow)"/>
+  <text x="113" y="405" text-anchor="middle" font-size="12"
+        font-weight="bold" fill="white">Compile Anteproyecto</text>
+  <text x="113" y="422" text-anchor="middle" font-size="10"
+        fill="#DDD">make / LaTeX IDE</text>
+
+  <!-- Arrow from side path → back into main flow (enters box 6 left side at mid-height) -->
+  <!--  (113,433)↓(113,476)→(238,476)  -->
+  <polyline points="113,433 113,476 238,476"
+            fill="none" stroke="#555" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- ── MAIN FLOW resumes ──────────────────────────────────────────── -->
+  <!-- NO label + arrow down -->
+  <text x="382" y="400" text-anchor="start" font-size="11"
+        font-weight="bold" fill="#C0392B">NO</text>
+  <line x1="370" y1="388" x2="370" y2="453" stroke="#555" stroke-width="2"
+        marker-end="url(#arr)"/>
+
+  <!-- 6. Edit book content -->
+  <rect x="240" y="455" width="260" height="50" rx="10" fill="#2980B9"
+        filter="url(#shadow)"/>
+  <text x="370" y="474" text-anchor="middle" font-size="13"
+        font-weight="bold" fill="white">4. Edit Book Content</text>
+  <text x="370" y="493" text-anchor="middle" font-size="11"
+        fill="#EEE">chapters · abstract · biblio · figures</text>
+
+  <!-- ↓ arrow -->
+  <line x1="370" y1="505" x2="370" y2="520" stroke="#555" stroke-width="2"
+        marker-end="url(#arr)"/>
+
+  <!-- 7. Compile document -->
+  <rect x="240" y="522" width="260" height="50" rx="10" fill="#2980B9"
+        filter="url(#shadow)"/>
+  <text x="370" y="541" text-anchor="middle" font-size="13"
+        font-weight="bold" fill="white">5. Compile Document</text>
+  <text x="370" y="559" text-anchor="middle" font-size="11"
+        fill="#EEE">make → pdflatex + biber + makeglossaries</text>
+
+  <!-- ↓ arrow -->
+  <line x1="370" y1="572" x2="370" y2="590" stroke="#555" stroke-width="2"
+        marker-end="url(#arr)"/>
+
+  <!-- 8. DECISION – PDF satisfactory?  centre (370, 633) -->
+  <!--    top(370,590) right(468,633) bottom(370,676) left(272,633)   -->
+  <polygon points="370,590 468,633 370,676 272,633" fill="#E67E22"
+           filter="url(#shadow)"/>
+  <text x="370" y="627" text-anchor="middle" font-size="12"
+        font-weight="bold" fill="white">PDF</text>
+  <text x="370" y="644" text-anchor="middle" font-size="12"
+        font-weight="bold" fill="white">Satisfactory?</text>
+
+  <!-- NO loop → right side → back to Edit Book Content right edge -->
+  <text x="470" y="624" text-anchor="start" font-size="11"
+        font-weight="bold" fill="#C0392B">NO</text>
+  <!--  (468,633)→(590,633)→(590,480)→(500,480)  -->
+  <polyline points="468,633 590,633 590,480 500,480"
+            fill="none" stroke="#555" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="596" y="561" text-anchor="start" font-size="10" fill="#666">Revise</text>
+  <text x="596" y="574" text-anchor="start" font-size="10" fill="#666">&amp; iterate</text>
+
+  <!-- YES → down -->
+  <text x="382" y="690" text-anchor="start" font-size="11"
+        font-weight="bold" fill="#C0392B">YES</text>
+  <line x1="370" y1="676" x2="370" y2="703" stroke="#555" stroke-width="2"
+        marker-end="url(#arr)"/>
+
+  <!-- 9. Fill in paperwork -->
+  <rect x="240" y="705" width="260" height="50" rx="10" fill="#16A085"
+        filter="url(#shadow)"/>
+  <text x="370" y="724" text-anchor="middle" font-size="13"
+        font-weight="bold" fill="white">6. Fill in Paperwork</text>
+  <text x="370" y="743" text-anchor="middle" font-size="11"
+        fill="#EEE">PapeleoTFG · PapeleoTFM · PapeleoPHD</text>
+
+  <!-- ↓ arrow -->
+  <line x1="370" y1="755" x2="370" y2="770" stroke="#555" stroke-width="2"
+        marker-end="url(#arr)"/>
+
+  <!-- 10. Compile paperwork -->
+  <rect x="240" y="772" width="260" height="50" rx="10" fill="#16A085"
+        filter="url(#shadow)"/>
+  <text x="370" y="791" text-anchor="middle" font-size="13"
+        font-weight="bold" fill="white">7. Compile Paperwork</text>
+  <text x="370" y="809" text-anchor="middle" font-size="11"
+        fill="#EEE">make / LaTeX IDE per document</text>
+
+  <!-- ↓ arrow -->
+  <line x1="370" y1="822" x2="370" y2="838" stroke="#555" stroke-width="2"
+        marker-end="url(#arr)"/>
+
+  <!-- 11. END -->
+  <ellipse cx="370" cy="865" rx="110" ry="30" fill="#2C3E50"
+           filter="url(#shadow)"/>
+  <text x="370" y="871" text-anchor="middle" font-size="14"
+        font-weight="bold" fill="white">SUBMIT / DONE ✓</text>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       LEGEND
+       ═══════════════════════════════════════════════════════════════════ -->
+  <!-- moved to top-right corner so it doesn't overlap the side path -->
+  <rect x="486" y="100" width="220" height="152" rx="8" fill="white"
+        stroke="#CCC" stroke-width="1" filter="url(#shadow)"/>
+  <text x="596" y="120" text-anchor="middle" font-size="12"
+        font-weight="bold" fill="#333">Legend</text>
+
+  <!-- Setup -->
+  <rect x="500" y="130" width="18" height="14" rx="3" fill="#8E44AD"/>
+  <text x="524" y="142" font-size="11" fill="#333">Setup / choice</text>
+
+  <!-- Main workflow -->
+  <rect x="500" y="153" width="18" height="14" rx="3" fill="#2980B9"/>
+  <text x="524" y="165" font-size="11" fill="#333">Writing workflow</text>
+
+  <!-- Anteproyecto -->
+  <rect x="500" y="176" width="18" height="14" rx="3" fill="#27AE60"/>
+  <text x="524" y="188" font-size="11" fill="#333">Anteproyecto (optional)</text>
+
+  <!-- Paperwork -->
+  <rect x="500" y="199" width="18" height="14" rx="3" fill="#16A085"/>
+  <text x="524" y="211" font-size="11" fill="#333">Paperwork</text>
+
+  <!-- Decision -->
+  <polygon points="509,222 519,229 509,236 499,229" fill="#E67E22"/>
+  <text x="524" y="234" font-size="11" fill="#333">Decision</text>
+
+</svg>
